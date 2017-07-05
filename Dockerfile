@@ -18,7 +18,7 @@ RUN cp /etc/php5/fpm/php.ini /etc/php5/fpm/php1.ini && \
 
 COPY php.ini /etc/php5/fpm/
 COPY default /etc/nginx/sites-available/
-
+COPY tz.php /usr/share/nginx/html/
 
 RUN apt-get update && \
 	apt-get clean  && \
