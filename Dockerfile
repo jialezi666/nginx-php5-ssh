@@ -9,7 +9,7 @@ RUN apt-get update && \
   
 RUN apt-get update && \
 	apt-get clean  && \
-	apt-get install -y nginx  php5-fpm && \
+	apt-get install -y nginx  php5-fpm php5-dev && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
