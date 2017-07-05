@@ -13,8 +13,8 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-RUN rm -rf /etc/php5/fpm/php.ini && \
-  rm -rf /etc/nginx/sites-available/default 
+RUN cp /etc/php5/fpm/php.ini /etc/php5/fpm/php1.ini && \
+  	cp /etc/nginx/sites-available/default  /etc/nginx/sites-available/default1
 
 COPY php.ini /etc/php5/fpm/
 COPY default /etc/nginx/sites-available/
@@ -33,9 +33,10 @@ RUN mkdir /var/run/sshd && \
 
 RUN cd /root && \
 	echo "#!/bin/bash" > run.sh && \
-	 echo "service nginx start" >> run.sh && \
-	 echo "/usr/sbin/sshd -D" >> run.sh && \
-	 chmod +x run.sh
+	echo "service nginx restart" >> run.sh && \
+	echo "service php5-fpm restart" >> run.sh && \
+	echo "/usr/sbin/sshd -D" >> run.sh && \
+	chmod +x run.sh
 	 
 
 EXPOSE 22
