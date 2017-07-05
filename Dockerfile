@@ -13,8 +13,8 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-RUN cp /etc/php5/fpm/php.ini /etc/php5/fpm/php1.ini && \
-  	cp /etc/nginx/sites-available/default  /etc/nginx/sites-available/default1
+RUN mv /etc/php5/fpm/php.ini /etc/php5/fpm/php1.ini && \
+  	mv /etc/nginx/sites-available/default  /etc/nginx/sites-available/default1
 
 COPY php.ini /etc/php5/fpm/
 COPY default /etc/nginx/sites-available/
