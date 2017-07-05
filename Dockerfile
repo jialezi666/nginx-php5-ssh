@@ -13,7 +13,7 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-RUM rm -rf /etc/php5/fpm/php.ini && \
+RUN rm -rf /etc/php5/fpm/php.ini && \
   rm -rf /etc/nginx/sites-available/default 
 
 COPY php.ini /etc/php5/fpm/
